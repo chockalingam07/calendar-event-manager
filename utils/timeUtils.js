@@ -1,5 +1,6 @@
 const { addMinutes, setHours, setMinutes, isBefore } = require('date-fns');
 
+// check the overlapping
 exports.isOverlapping = (start, end, event) => {
   const bufferStart = addMinutes(start, -15);
   const bufferEnd = addMinutes(end, 15);
@@ -9,6 +10,7 @@ exports.isOverlapping = (start, end, event) => {
   return bufferStart < eventEnd && bufferEnd > eventStart;
 };
 
+// generateSlots upcoming
 exports.generateSlots = (start, end, duration, workingHours) => {
   const slots = [];
   let current = new Date(start);

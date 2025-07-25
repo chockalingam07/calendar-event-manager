@@ -2,10 +2,10 @@ const Event = require('../models/Event');
 const { parseISO, isBefore, addMinutes, formatISO, differenceInMinutes } = require('date-fns');
 const { isOverlapping, generateSlots } = require('../utils/timeUtils');
 
-const BUFFER_MINUTES = 15;
 const WORK_HOURS = { start: 9, end: 17 }; // 9 AM - 5 PM
 const MAX_DURATION_MINUTES = 8 * 60; // 8 hours max
 
+// checking the conflits times
 exports.checkConflicts = async (start, end, participants) => {
   const startTime = parseISO(start);
   const endTime = parseISO(end);
@@ -46,6 +46,7 @@ exports.checkConflicts = async (start, end, participants) => {
   };
 };
 
+// suggest times
 exports.suggestTimes = async (start, end, participants) => {
   const startTime = parseISO(start);
   const endTime = parseISO(end);
@@ -84,8 +85,7 @@ exports.suggestTimes = async (start, end, participants) => {
   };
 };
 
-
-
+// create events
 exports.createEvent = async (start, end, participants) => {
   const startTime = parseISO(start);
   const endTime = parseISO(end);

@@ -1,5 +1,6 @@
 const { body } = require("express-validator");
 
+// input vaildation
 exports.validateCalendarInput = [
   body("start").isISO8601().withMessage("Start must be a valid ISO 8601 date"),
 
